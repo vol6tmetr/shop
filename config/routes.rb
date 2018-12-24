@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :managers
   resources :customers
   resources :stores
+  resources :products
+  post 'duplicate', to: 'products#duplicate', as: :product_duplicate
 
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

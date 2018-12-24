@@ -5,4 +5,5 @@ class Store < ApplicationRecord
          :rememberable, :validatable
 
   has_many :managers, dependent: :destroy
+  has_many :products, dependent: :destroy
 end
