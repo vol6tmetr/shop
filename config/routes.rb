@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_for :managers, path: 'managers', controllers: {
+    sessions: 'manager/sessions',
+    registrations: 'manager/registrations'
+  }
+
   devise_for :customers, path: 'customers', controllers: {
     sessions: 'customers/sessions',
     registrations: 'customers/registrations'
@@ -10,6 +15,7 @@ Rails.application.routes.draw do
     registrations: 'stores/registrations'
   }
 
+  resources :managers
   resources :customers
   resources :stores
   root 'home#index'
