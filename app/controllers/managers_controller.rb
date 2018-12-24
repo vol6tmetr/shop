@@ -54,21 +54,23 @@ class ManagersController < ApplicationController
   # DELETE /managers/1
   # DELETE /managers/1.json
   def destroy
+    @store = @manager.store
     @manager.destroy
     respond_to do |format|
-      format.html { redirect_to managers_url, notice: 'Manager was successfully destroyed.' }
+      format.html { redirect_to @store, notice: 'Manager was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_manager
-      @manager = Manager.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def manager_params
-      params.require(:manager).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_manager
+    @manager = Manager.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def manager_params
+    params.require(:manager).permit(:name)
+  end
 end
