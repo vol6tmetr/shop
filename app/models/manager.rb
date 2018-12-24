@@ -2,9 +2,11 @@ class Manager < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :rememberable, :validatable, :authentication_keys => [:name]
+         :rememberable, :validatable, :authentication_keys => [:username]
 
-  validates :name, uniqueness: true
+  validates :username, uniqueness: true
+
+  belongs_to :store, class_name: 'Store', foreign_key: :store_id, optional: true
 
   def email_required?
     false

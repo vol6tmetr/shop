@@ -5,8 +5,9 @@ class AddDeviseToManagers < ActiveRecord::Migration[5.2]
     change_table :managers do |t|
       ## Database authenticatable
       # t.string :email,              null: false, default: ""
-      t.string :name, null: false, default: '', uniq: true
-      t.string :encrypted_password, null: false, default: ""
+      t.string :username, null: false, default: '', uniq: true
+      t.string :name, null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token
@@ -38,7 +39,7 @@ class AddDeviseToManagers < ActiveRecord::Migration[5.2]
       # t.timestamps null: false
     end
 
-    add_index :managers, :name, unique: true
+    add_index :managers, :username, unique: true
     add_index :managers, :reset_password_token, unique: true
     # add_index :managers, :confirmation_token,   unique: true
     # add_index :managers, :unlock_token,         unique: true
