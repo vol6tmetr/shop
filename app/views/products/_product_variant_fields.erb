@@ -1,0 +1,8 @@
+<fieldset class="nested-fields">
+  Product variants:
+  <%= f.label :title, 'Title' %>
+  <%= f.text_field :title %>
+  <%= f.label :title, 'Price' %>
+  <%= f.text_field :price %> <br>
+  <%= link_to_remove_association 'Remove variant', f %>
+</fieldset>
