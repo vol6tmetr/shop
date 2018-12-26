@@ -2,7 +2,7 @@ class OrderController < ApplicationController
   before_action :set_order, only: :status
 
   def index
-    @orders = Order.where(store_id: current_manager.store_id)
+    @orders = Order.where(store_id: current_manager.store_id).order("created_at DESC")
   end
 
   def create
@@ -28,7 +28,7 @@ class OrderController < ApplicationController
       @order.update_attribute(:status, 'Delivered')
       flash[:notice] = 'Order delivered'
     else
-      flash[:notice] = 'You can\'t process this order'
+      flash[:notice] = 'You can\'t manage this order'
     end
     redirect_to orders_path
   end
