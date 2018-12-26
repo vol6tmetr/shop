@@ -5,6 +5,7 @@ class CreateProductVariants < ActiveRecord::Migration[5.2]
       t.decimal :price, null: false
 
       t.belongs_to :product, index: true
+      t.belongs_to :shopping_cart, index: true
       t.timestamps
     end
   end

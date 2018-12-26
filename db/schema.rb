@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_081041) do
+ActiveRecord::Schema.define(version: 2018_12_26_061756) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,9 +67,11 @@ ActiveRecord::Schema.define(version: 2018_12_25_081041) do
     t.string "title", default: "", null: false
     t.decimal "price", null: false
     t.integer "product_id"
+    t.integer "shopping_cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_variants_on_product_id"
+    t.index ["shopping_cart_id"], name: "index_product_variants_on_shopping_cart_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -79,6 +81,23 @@ ActiveRecord::Schema.define(version: 2018_12_25_081041) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["store_id"], name: "index_products_on_store_id"
+  end
+
+  create_table "shopping_cart_items", force: :cascade do |t|
+    t.integer "product_variant_id"
+    t.integer "quantity"
+    t.integer "shopping_cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shopping_cart_id"], name: "index_shopping_cart_items_on_shopping_cart_id"
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.integer "customer_id"
+    t.float "price", default: 0.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_shopping_carts_on_customer_id"
   end
 
   create_table "stores", force: :cascade do |t|
