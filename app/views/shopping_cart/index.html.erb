@@ -25,3 +25,15 @@
 <hr>
 <h3>Total price:</h3>
 <%=  @shopping_cart.price %>
+<hr>
+
+<%= form_tag '/checkout', method: :post do %>
+  <%= label_tag 'Name' %>
+  <%= text_field_tag 'name' %>
+  <%= label_tag 'Phone Number' %>
+  <%= text_field_tag 'phone_number' %>
+  <%= label_tag 'Address' %>
+  <%= text_field_tag 'address' %>
+  <br>
+  <%= submit_tag 'Checkout' %>
+<% end %>

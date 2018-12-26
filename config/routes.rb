@@ -21,10 +21,14 @@ Rails.application.routes.draw do
   resources :products
   post 'duplicate', to: 'products#duplicate', as: :product_duplicate
 
-  # get '/cart', to: 'shopping_cart#index'
-  # resources :shopping_cart_item
   post '/cart', to: 'shopping_cart_item#create'
   get '/shopping_cart', to: 'shopping_cart#index'
+
+  post '/checkout', to: 'order#create'
+
+  get '/orders', to: 'order#index'
+
+  put '/order_status', to: 'order#status'
 
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

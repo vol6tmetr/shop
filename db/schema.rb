@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_26_061756) do
+ActiveRecord::Schema.define(version: 2018_12_26_165226) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,28 @@ ActiveRecord::Schema.define(version: 2018_12_26_061756) do
     t.index ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
     t.index ["store_id"], name: "index_managers_on_store_id"
     t.index ["username"], name: "index_managers_on_username", unique: true
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.string "cart_items"
+    t.string "items_quantity"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "status", default: "new", null: false
+    t.string "name", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.string "address", default: "", null: false
+    t.float "price", null: false
+    t.integer "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "store_id"
+    t.index ["manager_id"], name: "index_orders_on_manager_id"
   end
 
   create_table "product_variants", force: :cascade do |t|

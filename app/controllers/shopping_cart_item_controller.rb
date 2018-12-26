@@ -10,7 +10,8 @@ class ShoppingCartItemController < ApplicationController
       end
     end
     @shopping_cart.save
-    redirect_to shopping_cart_path
+    flash[:notice] = 'Product added to cart'
+    redirect_back fallback_location: root_path
   end
 
   private

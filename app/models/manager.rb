@@ -6,6 +6,7 @@ class Manager < ApplicationRecord
 
   validates :username, uniqueness: true
 
+  has_many :orders
   belongs_to :store, class_name: 'Store', foreign_key: :store_id, optional: true
 
   def email_required?

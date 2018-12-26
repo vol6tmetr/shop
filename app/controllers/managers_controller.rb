@@ -4,7 +4,7 @@ class ManagersController < ApplicationController
   # GET /managers
   # GET /managers.json
   def index
-    @managers = Manager.all
+    @managers = Manager.where(store_id: current_store.id)
   end
 
   # GET /managers/1
