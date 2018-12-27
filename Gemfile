@@ -34,7 +34,6 @@ gem 'jquery-rails'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 
-
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

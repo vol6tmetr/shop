@@ -1,4 +1,5 @@
 class OrderController < ApplicationController
+  before_action :authenticate_manager!, except: :create
   before_action :set_order, only: :status
 
   def index

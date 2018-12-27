@@ -15,10 +15,10 @@ Rails.application.routes.draw do
     registrations: 'stores/registrations'
   }
 
-  resources :managers
-  resources :customers
-  resources :stores
+  resources :managers, only: [:index, :show, :edit, :update, :destroy]
+  resources :stores, only: [:index, :show]
   resources :products
+
   post 'duplicate', to: 'products#duplicate', as: :product_duplicate
 
   post '/cart', to: 'shopping_cart_item#create'

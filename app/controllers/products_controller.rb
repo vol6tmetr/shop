@@ -1,13 +1,11 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_manager!, except: :show
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
-    if current_manager
-      @products = Product.where(store_id: current_manager.store_id)
-    end
+    @products = Product.where(store_id: current_manager.store_id)
   end
 
   # GET /products/1
@@ -82,5 +80,9 @@ class ProductsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
     params.require(:product).permit(:name, :description, product_variant_attributes: [:id, :title, :price, :_destroy], image: [])
+  end
+
+  def check_customer
+
   end
 end

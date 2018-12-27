@@ -1,4 +1,5 @@
 class ManagersController < ApplicationController
+  before_action :authenticate_store!
   before_action :set_manager, only: [:show, :edit, :update, :destroy]
 
   # GET /managers
@@ -12,29 +13,8 @@ class ManagersController < ApplicationController
   def show
   end
 
-  # GET /managers/new
-  def new
-    @manager = Manager.new
-  end
-
   # GET /managers/1/edit
   def edit
-  end
-
-  # POST /managers
-  # POST /managers.json
-  def create
-    @manager = Manager.new(manager_params)
-
-    respond_to do |format|
-      if @manager.save
-        format.html { redirect_to @manager, notice: 'Manager was successfully created.' }
-        format.json { render :show, status: :created, location: @manager }
-      else
-        format.html { render :new }
-        format.json { render json: @manager.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /managers/1
