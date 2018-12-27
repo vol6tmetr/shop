@@ -5,5 +5,10 @@
   <%= @manager.name %>
 </p>
 
+<p>
+  <strong>Userame:</strong>
+  <%= @manager.username %>
+</p>
+
 <%= link_to 'Edit', edit_manager_path(@manager) %> |
-<%= link_to 'Back', @manager.store %>
+<%= link_to 'Back', managers_path %>

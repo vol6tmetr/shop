@@ -5,6 +5,9 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    if current_manager
+      @products = Product.where(store_id: current_manager.store_id)
+    end
   end
 
   # GET /products/1

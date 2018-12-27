@@ -17,17 +17,23 @@
 <% end %>
 
 <br>
-<%= form_tag '/cart', method: :post do %>
-  <% @product.product_variant.each do |var| %>
-    <%= var.title + ' ' + var.price.to_s %>
-    <%= hidden_field_tag 'product_ids[]', var.id %>
-    <%= number_field_tag 'product_quantities[]', 0 %>
-    <br>
+<% if current_customer %>
+  <%= form_tag '/cart', method: :post do %>
+    <% @product.product_variant.each do |var| %>
+      <%= var.title + ' ' + var.price.to_s %>
+      <%= hidden_field_tag 'product_ids[]', var.id %>
+      <%= number_field_tag 'product_quantities[]', 0 %>
+      <br>
+    <% end %>
+    <%= submit_tag 'Add to Cart' %>
   <% end %>
-  <%= submit_tag 'Add to Cart' %>
 <% end %>
 
 <br>
+<% if current_manager %>
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Back', products_path %>
+<% elsif current_customer %>
+  <%= link_to 'Back', @product.store %>
+<% end %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>

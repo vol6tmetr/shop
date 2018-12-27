@@ -10,6 +10,17 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show
+    if current_customer
+      if params[:search].nil? || params[:search].empty?
+        @products = Product.where(store_id: params[:id])
+      else
+        @products_search = Product.search do
+          fulltext params[:search]
+          with(:store_id, params[:id])
+        end
+        @products = @products_search.results
+      end
+    end
   end
 
   # GET /stores/new

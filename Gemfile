@@ -31,6 +31,8 @@ gem 'cocoon'
 gem 'devise'
 gem 'image_processing', '~> 1.2'
 gem 'jquery-rails'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 
 # Use ActiveStorage variant

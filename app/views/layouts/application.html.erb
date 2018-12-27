@@ -21,7 +21,7 @@
     <% elsif current_store %>
       Signed as: <%= current_store.name %> (Store)
       <%= link_to 'Sign out', destroy_store_session_path, method: :delete  %>
-      <%= link_to 'Managers', store_managers_path %>
+      <%= link_to 'Managers', managers_path %>
     <% elsif current_manager %>
       Signed as: <%= current_manager.name %> (Manager)
       <%= link_to 'Sign out', destroy_manager_session_path, method: :delete  %>
