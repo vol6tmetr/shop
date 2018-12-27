@@ -1,12 +1,12 @@
-<br>
-<h2>Shopping Cart</h2>
-<table>
+<h3 class="text-center mt-3 mb-3">Shopping Cart</h3>
+
+<table class="table">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Variant</th>
-    <th>Price</th>
-    <th>Quantity</th>
+    <th class="text-center" scope="col">Name</th>
+    <th class="text-center" scope="col">Variant</th>
+    <th class="text-center" scope="col">Price</th>
+    <th class="text-center" scope="col">Quantity</th>
   </tr>
   </thead>
 
@@ -14,26 +14,27 @@
   <% @shopping_cart.shopping_cart_item.each do |item| %>
     <% product_variant = ProductVariant.find(item.product_variant_id) %>
       <tr>
-        <td><%= product_variant.product.name %></td>
-        <td><%= product_variant.title %></td>
-        <td><%= product_variant.price %></td>
-        <td><%= item.quantity %></td>
+        <td class="text-center" scope="row"><%= product_variant.product.name %></td>
+        <td class="text-center" scope="row"><%= product_variant.title %></td>
+        <td class="text-center" scope="row"><%= product_variant.price %></td>
+        <td class="text-center" scope="row"><%= item.quantity %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 <hr>
-<h3>Total price:</h3>
-<%=  @shopping_cart.price %>
+<h3 class="text-right mr-3">Total price: <%= @shopping_cart.price %></h3>
 <hr>
 
 <%= form_tag '/checkout', method: :post do %>
   <%= label_tag 'Name' %>
-  <%= text_field_tag 'name' %>
+  <%= text_field_tag 'name', "", class: 'input-group' %>
   <%= label_tag 'Phone Number' %>
-  <%= text_field_tag 'phone_number' %>
+  <%= text_field_tag 'phone_number', "", class: 'input-group' %>
   <%= label_tag 'Address' %>
-  <%= text_field_tag 'address' %>
+  <%= text_field_tag 'address', "", class: 'input-group' %>
   <br>
-  <%= submit_tag 'Checkout' %>
+  <div class="d-flex justify-content-center">
+    <%= submit_tag 'Checkout', class: 'btn btn-primary mt-2' %>
+  </div>
 <% end %>

@@ -1,39 +1,33 @@
-<p id="notice"><%= notice %></p>
+<h4 class="text-center mt-3 mb-3">Product name: <%= @product.name %></h4>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<br>
+<p>Product images:</p>
 
 <% @product.image.each do |image| %>
   <%= image_tag image.variant(resize: '100x100') %>
 <% end %>
 
-<br>
+<p class="mt-2">Product description: <%= @product.description %></p>
+
 <% if current_customer %>
-  <%= form_tag '/cart', method: :post do %>
+  <p>Order item:</p>
+  <%= form_tag '/cart', { :method => :post, :class => 'input-group'} do %>
     <% @product.product_variant.each do |var| %>
-      <%= var.title + ' ' + var.price.to_s %>
+      <label><%= var.title + ' ' + var.price.to_s %></label>
       <%= hidden_field_tag 'product_ids[]', var.id %>
-      <%= number_field_tag 'product_quantities[]', 0 %>
-      <br>
+      <%= number_field_tag 'product_quantities[]', 0, min: 0, class: 'input-group mb-1' %>
     <% end %>
-    <%= submit_tag 'Add to Cart' %>
+    <%= submit_tag 'Add to Cart', class: 'btn btn-primary mt-2' %>
   <% end %>
 <% end %>
 
-<br>
 <% if current_manager %>
-  <%= link_to 'Edit', edit_product_path(@product) %> |
-  <%= link_to 'Back', products_path %>
+  <div class="d-flex justify-content-center">
+    <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-primary mr-2' %>
+    <%= link_to 'Back', products_path, class: 'btn btn-primary mr-2' %>
+  </div>
 <% elsif current_customer %>
-  <%= link_to 'Back', @product.store %>
+  <div class="d-flex justify-content-center">
+    <%= link_to 'Back', @product.store, class: 'btn btn-primary mt-2' %>
+  </div>
 <% end %>
 

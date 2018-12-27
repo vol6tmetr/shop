@@ -1,0 +1,19 @@
+<% if current_customer %>
+  <li class="nav-item">
+    <%= link_to 'Stores', stores_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Cart', shopping_cart_path, class: 'nav-link' %>
+  </li>
+<% elsif current_store %>
+  <li class="nav-item">
+    <%= link_to 'Managers', managers_path, class: 'nav-link' %>
+  </li>
+<% elsif current_manager %>
+  <li class="nav-item">
+    <%= link_to 'Products', products_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Orders', orders_path, class: 'nav-link' %>
+  </li>
+<% end %>

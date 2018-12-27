@@ -1,0 +1,7 @@
+<% if current_customer %>
+  Logged as: <%= current_customer.name %> (Customer)
+<% elsif current_store %>
+  Logged as: <%= current_store.name %> (Store)
+<% elsif current_manager %>
+  Logged as: <%= current_manager.name %> (Manager)
+<% end %>

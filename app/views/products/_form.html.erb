@@ -11,30 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <form>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image, multiple: true %>
-  </div>
+    <div class="form-group">
+      <%= form.label :image %>
+      <%= form.file_field :image, multiple: true, class: "form-control" %>
+    </div>
 
-  <div class="product-variants">
-    <%= form.fields_for :product_variant do |var| %>
-      <%= render 'product_variant_fields', f: var %>
-    <% end %>
-  </div>
+    <div class="product-variants form-group">
+      <%= form.fields_for :product_variant do |var| %>
+        <%= render 'product_variant_fields', f: var %>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div class="d-flex justify-content-center">
+      <%= link_to_add_association 'Add Variant', form, :product_variant, data: {
+          association_insertion_node: '.product-variants', association_insertion_method: :append }, class: 'btn btn-primary'  %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-    <%= link_to_add_association 'Add Variant', form, :product_variant, data: {
-        association_insertion_node: '.product-variants', association_insertion_method: :append }  %>
-  </div>
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div class="form-group">
+        <%= form.submit 'Product', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </form>
+
 <% end %>

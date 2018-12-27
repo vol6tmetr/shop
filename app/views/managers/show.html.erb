@@ -1,14 +1,8 @@
-<p id="notice"><%= notice %></p>
+<h4 class="text-center mt-3 mb-3">Manager name: <%= @manager.name %></h4>
 
-<p>
-  <strong>Name:</strong>
-  <%= @manager.name %>
-</p>
+<h5>Manager Username: <%= @manager.username %></h5>
 
-<p>
-  <strong>Userame:</strong>
-  <%= @manager.username %>
-</p>
-
-<%= link_to 'Edit', edit_manager_path(@manager) %> |
-<%= link_to 'Back', managers_path %>
+<div class="d-flex justify-content-center">
+  <%= link_to 'Edit', edit_manager_path(@manager), class: 'btn btn-primary mr-2' %>
+  <%= link_to 'Back', managers_path, class: 'btn btn-primary' %>
+</div>

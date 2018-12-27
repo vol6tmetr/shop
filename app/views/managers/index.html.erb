@@ -1,29 +1,27 @@
-<p id="notice"><%= notice %></p>
+<h3 class="text-center mt-3 mb-3">Managers</h3>
 
-<h1>Managers</h1>
-
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Username</th>
-      <th colspan="3"></th>
+      <th class="text-center" scope="col">Name</th>
+      <th class="text-center" scope="col">Username</th>
+      <th colspan="3" class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @managers.each do |manager| %>
       <tr>
-        <td><%= manager.name %></td>
-        <td><%= manager.username %></td>
-        <td><%= link_to 'Show', manager %></td>
-        <td><%= link_to 'Edit', edit_manager_path(manager) %></td>
-        <td><%= link_to 'Destroy', manager, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="text-center" scope="row"><%= manager.name %></td>
+        <td class="text-center" scope="row"><%= manager.username %></td>
+        <td class="text-center" scope="row"><%= link_to 'Show', manager %></td>
+        <td class="text-center" scope="row"><%= link_to 'Edit', edit_manager_path(manager) %></td>
+        <td class="text-center" scope="row"><%= link_to 'Destroy', manager, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Manager', new_manager_registration_path %>
+<div class="d-flex justify-content-center">
+  <%= link_to 'New Manager', new_manager_registration_path, class: 'btn btn-primary' %>
+</div>

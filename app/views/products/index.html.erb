@@ -1,30 +1,28 @@
-<p id="notice"><%= notice %></p>
+<h3 class="text-center mt-3 mb-3">Products</h3>
 
-<h1>Products</h1>
-
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="4">Actions</th>
+      <th class="text-center" scope="col">Name</th>
+      <th class="text-center" scope="col">Description</th>
+      <th colspan="4" class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Duplicate', product_duplicate_path(product), method: :post %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="text-center" scope="row"><%= product.name %></td>
+        <td class="text-center" scope="row"><%= product.description %></td>
+        <td scope="row"><%= link_to 'Show', product %></td>
+        <td scope="row"><%= link_to 'Duplicate', product_duplicate_path(product), method: :post %></td>
+        <td scope="row"><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td scope="row"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Product', new_product_path %>
+<div class="d-flex justify-content-center">
+  <%= link_to 'New Product', new_product_path, class: 'btn btn-primary mt-2' %>
+</div>

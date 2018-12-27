@@ -10,31 +10,11 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= link_to 'Home', root_path %>
-    <% if current_customer %>
-      Signed as: <%= current_customer.name %> (Customer)
-      <%= link_to 'Sign out', destroy_customer_session_path, method: :delete  %>
-      <%= link_to 'Stores', stores_path %>
-      <%= link_to 'Cart', shopping_cart_path %>
-    <% elsif current_store %>
-      Signed as: <%= current_store.name %> (Store)
-      <%= link_to 'Sign out', destroy_store_session_path, method: :delete  %>
-      <%= link_to 'Managers', managers_path %>
-    <% elsif current_manager %>
-      Signed as: <%= current_manager.name %> (Manager)
-      <%= link_to 'Sign out', destroy_manager_session_path, method: :delete  %>
-      <%= link_to 'Products', products_path %>
-      <%= link_to 'Orders', orders_path %>
-    <% else %>
-      <p>Sign up as: <%= link_to 'Customer', new_customer_registration_path %>
-        <%= link_to 'Store', new_store_registration_path %> or Sign in as:
-        <%= link_to 'Customer', new_customer_session_path %>
-        <%= link_to 'Store', new_store_session_path %>
-        <%= link_to 'Manager', new_manager_session_path %>
-      </p>
-    <% end %>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+
+    <div class="container mt-4">
+      <%= render 'shared/alerts' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

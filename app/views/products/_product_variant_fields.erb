@@ -1,8 +1,11 @@
 <fieldset class="nested-fields">
-  Product variants:
+  Product variant:
+  <br>
   <%= f.label :title, 'Title' %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, class: "form-control" %>
   <%= f.label :title, 'Price' %>
-  <%= f.text_field :price %> <br>
-  <%= link_to_remove_association 'Remove variant', f %>
+  <%= f.text_field :price, class: "form-control" %> <br>
+  <div class="d-flex justify-content-center">
+    <%= link_to_remove_association 'Remove variant', f, class: 'btn btn-primary' %>
+  </div>
 </fieldset>

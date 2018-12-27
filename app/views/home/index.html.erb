@@ -1,2 +1,13 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="jumbotron">
+  <h1 class="display-4 text-center">Welcome to the Shoppy</h1>
+  <p class="h3 text-center">Marketplace where you can buy and sell everything</p>
+  <hr class="my-4">
+  <p class="h4 text-center">Sign up as:</p>
+  <div class="d-flex justify-content-center">
+    <%= link_to 'Customer', new_customer_registration_path, class: 'btn btn-primary btn-lg align-middle', role: 'button' %>
+  </div>
+  <p class="h6 text-center mt-2">Or</p>
+  <div class="d-flex justify-content-center">
+    <%= link_to 'Store', new_store_registration_path, class: 'btn btn-primary btn-lg align-middle', role: 'button' %>
+  </div>
+</div>

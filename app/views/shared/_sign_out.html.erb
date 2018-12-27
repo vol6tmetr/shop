@@ -1,0 +1,7 @@
+<% if current_customer %>
+  <%= link_to 'Sign out', destroy_customer_session_path, method: :delete, class: 'nav-link'  %>
+<% elsif current_store %>
+  <%= link_to 'Sign out', destroy_store_session_path, method: :delete, class: 'nav-link'  %>
+<% elsif current_manager %>
+  <%= link_to 'Sign out', destroy_manager_session_path, method: :delete, class: 'nav-link'  %>
+<% end %>

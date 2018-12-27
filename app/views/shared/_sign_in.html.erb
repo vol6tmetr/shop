@@ -1,0 +1,14 @@
+<% if current_customer.nil? && current_store.nil? && current_manager.nil? %>
+<span class="navbar-text">Log in as:</span>
+<li class="nav-item">
+  <%= link_to 'Customer', new_customer_session_path, class: 'nav-link' %>
+</li>
+<span class="navbar-text">|</span>
+<li class="nav-item">
+  <%= link_to 'Store', new_store_session_path, class: 'nav-link' %>
+</li>
+<span class="navbar-text">|</span>
+<li class="nav-item">
+  <%= link_to 'Manager', new_manager_session_path, class: 'nav-link' %>
+</li>
+<% end %>

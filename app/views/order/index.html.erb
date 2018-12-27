@@ -1,37 +1,42 @@
-<h1>Orders</h1>
+<h3 class="text-center mt-3 mb-3">Orders</h3>
 
-<table>
+<table class="table">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Phone Number</th>
-    <th>Address</th>
-    <th>Price</th>
-    <th>Created at</th>
-    <th>Updated at</th>
-    <th>Status</th>
-    <th>Manager</th>
-    <th>Action</th>
+    <th class="text-center" scope="col">Name</th>
+    <th class="text-center" scope="col">Phone Number</th>
+    <th class="text-center" scope="col">Address</th>
+    <th class="text-center" scope="col">Price</th>
+    <th class="text-center" scope="col">Created at</th>
+    <th class="text-center" scope="col">Updated at</th>
+    <th class="text-center" scope="col">Status</th>
+    <th class="text-center" scope="col">Manager</th>
+    <th class="text-center" scope="col">Process</th>
   </tr>
   </thead>
 
   <tbody>
   <% @orders.each do |order| %>
-    <tr>
-      <td><%= order.name %></td>
-      <td><%= order.phone_number %></td>
-      <td><%= order.address %></td>
-      <td><%= order.price %></td>
-      <td><%= order.created_at %></td>
-      <td><%= order.updated_at %></td>
-      <td><%= order.status %></td>
+    <% if order.status == 'new' %>
+    <tr class="bg-info">
+    <% elsif order.status == 'Processing' %>
+    <tr class="bg-warning">
+    <% elsif order.status == 'Delivered' %>
+    <tr class="bg-success">
+    <% end %>
+      <td class="text-center" scope="row"><%= order.name %></td>
+      <td class="text-center" scope="row"><%= order.phone_number %></td>
+      <td class="text-center" scope="row"><%= order.address %></td>
+      <td class="text-center" scope="row"><%= order.price %></td>
+      <td class="text-center" scope="row"><%= order.created_at %></td>
+      <td class="text-center" scope="row"><%= order.updated_at %></td>
+      <td class="text-center" scope="row"><%= order.status %></td>
       <% if !order.manager_id.nil? %>
-        <td><%= Manager.find(order.manager_id).name %></td>
+        <td class="text-center" scope="row"><%= Manager.find(order.manager_id).name %></td>
       <% else %>
-        <td>No Manager</td>
+        <td class="text-center" scope="row">No Manager</td>
       <% end %>
-
-      <td><%= link_to 'Process', order_status_path(:order_id => order.id), method: :put %></td>
+      <td scope="row"><%= link_to 'Process', order_status_path(:order_id => order.id), method: :put %></td>
     </tr>
   <% end %>
   </tbody>

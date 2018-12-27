@@ -1,6 +1,8 @@
-<h1>Editing Manager</h1>
+<h3 class="text-center mt-3 mb-3">Edit Manager</h3>
 
 <%= render 'form', manager: @manager %>
 
-<%= link_to 'Show', @manager %> |
-<%= link_to 'Back', managers_path %>
+<div class="d-flex justify-content-center">
+  <%= link_to 'Show', @manager, class: 'btn btn-primary mr-2' %>
+  <%= link_to 'Back', managers_path, class: 'btn btn-primary' %>
+</div>
